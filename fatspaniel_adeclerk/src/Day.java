@@ -4,8 +4,8 @@ public class Day {
 	int m;
 	int y;
 	float[] value_array;
-	Date sunrise;
-	Date sunset;
+	Calendar sunrise;
+	Calendar sunset;
 	
 	public Day()
 	{
@@ -13,8 +13,8 @@ public class Day {
 		m = -1;
 		y = -1;
 		value_array = new float[24];
-		sunrise = new Date();
-		sunset = new Date();
+		sunrise = Calendar.getInstance();
+		sunset = Calendar.getInstance();
 	}
 	
 	public Boolean is_valid()
@@ -50,12 +50,13 @@ public class Day {
 			day = d;
 			year = y;
 		
-			past_date = new GregorianCalendar(year,month,day);
+			past_date = Calendar.getInstance();
+			past_date.set(year, month, day);
 			time = new Date((past_date.getTimeInMillis()));
 		
 			SunriseSunset sunrise = new SunriseSunset(28.5381,81.3794,time,-4);
-			this.sunrise = sunrise.getSunrise();
-			this.sunset = sunrise.getSunset();
+			//this.sunrise = sunrise.getSunrise();
+			//this.sunset = sunrise.getSunset();
 		}
 	}
 

@@ -1,7 +1,7 @@
 import java.io.FileWriter;
 import java.net.*;
 import java.io.BufferedWriter;
-import java.util.ArrayList;
+import java.util.*;
 import java.io.*;
 
 import com.csvreader.*;
@@ -26,7 +26,8 @@ public class GraphFS {
 				dayRecords.get(i).printDay();	
 				i++;
 			}
-			htmlOutput(outputFile, dayRecords);			
+		
+				htmlOutput(outputFile, dayRecords);		
 		}
 		catch (IOException e)
 		{
@@ -122,14 +123,7 @@ public class GraphFS {
 					dayRecords.add(currentDay);
 				}
 			}
-			/*
-			i=0;
-			while(i < dayRecords.size())
-			{
-				dayRecords.get(i).printDay();	
-				i++;
-			}
-			*/
+		
 			return dayRecords;
 		}
 		catch(IOException e)
@@ -170,7 +164,8 @@ public class GraphFS {
 					"</style>\n\n");
 			outputStream.write("</head>" + "\n\n");
 			// body
-			outputStream.write("<body>\n<h1>Fatspaniel Output</h1>\n\n");
+			Calendar now = Calendar.getInstance();
+			outputStream.write("<body>\n<h1>Fatspaniel Output (generated "+now.getTime()+" )</h1>\n\n");
 			int i = 0;
 			int k = 0;
 			while(i < record_count)
